@@ -1,13 +1,19 @@
-package FileSys;
+package main.FileSys;
 
-import DataStructs.FileSysNode;
+import main.DataStructs.FileSysNode;
+
+import java.util.List;
 
 public class Control {
 
     private FileSysNode fileSys;
 
     public Control(FileSysNode fileSys){
-        fileSys = fileSys;
+        this.fileSys = fileSys;
+    }
+
+    public FileSysNode getCurDir(){
+        return this.fileSys;
     }
 
     public void processCommand(String cmd){
@@ -21,13 +27,15 @@ public class Control {
     }
 
     private void handlels(String cmd){
+        List<FileSysNode> nodes = fileSys.getChildren();
         for (FileSysNode node : fileSys.getChildren()){
             System.out.println(node.getName());
         }
+        System.out.println();
     }
 
     private void handlecd(String cmd){
-        String arg = cmd.substring(cmd.indexOf(' '));
+        String arg = cmd.replaceFirst("cd ", "");
         String[] folders =  arg.split("/");
         FileSysNode cur = this.fileSys;
         for (String folder : folders){
@@ -39,13 +47,16 @@ public class Control {
                     if (node.getName().equals(folder)){
                         foundFolder = true;
                         cur = node;
+                        break;
                     }
                 }
                 if (!foundFolder){
-                    System.out.println("folder " + folder + " does not exist.");
+                    cur = this.fileSys;
+                    System.out.println("Folder " + folder + " does not exist.");
                     break;
                 }
             }
         }
+        this.fileSys = cur;
     }
 }
