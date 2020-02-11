@@ -21,7 +21,19 @@ public class Control {
             handlels(cmd);
         }else if (cmd.startsWith("cd")){
             handlecd(cmd);
-        }else{
+        }else if (cmd.startsWith("cat")){
+            handlecat(cmd);
+        }else if (cmd.startsWith("rm")){
+            handlerm(cmd);
+        }else if (cmd.startsWith("mv")){
+            handlemv(cmd);
+        }else if (cmd.startsWith("cp")){
+            handlecp(cmd);
+        }else if (cmd.startsWith("push")){
+            handlepush(cmd);
+        }else if (cmd.startsWith("pull")){
+            handlepull(cmd);
+        }else {
             System.out.println("Not a valid command.");
         }
     }
@@ -58,5 +70,29 @@ public class Control {
             }
         }
         this.fileSys = cur;
+    }
+
+    private void handlecat(String cmd) {
+
+    }
+
+    private void handlerm(String cmd) {
+
+    }
+
+    private void handlemv(String cmd) {
+
+    }
+
+    private void handlecp(String cmd) {
+
+    }
+
+    private void handlepush(String cmd) {
+
+    }
+
+    private void handlepull(String cmd) {
+
     }
 }
