@@ -73,15 +73,14 @@ public class Control {
     }
 
     private void handlecat(String cmd) {
-
+       List<String> machinesName = this.fileSys.getMachinesContainingNode();
+       // TODO: make remote connection and send the commands
     }
 
     private void handlerm(String cmd) {
-
     }
 
     private void handlemv(String cmd) {
-
     }
 
     private void handlecp(String cmd) {
@@ -89,10 +88,10 @@ public class Control {
     }
 
     private void handlepush(String cmd) {
-
+        // TODO: implement the pushing to file system
     }
 
     private void handlepull(String cmd) {
-
+        //TODO: implement the pulling from file system
     }
 }
