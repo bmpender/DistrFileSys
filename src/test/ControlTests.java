@@ -3,6 +3,7 @@ package test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import main.DataStructs.FileSysNode;
+import main.DataStructs.Machine;
 import main.FileSys.Control;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +35,7 @@ public class ControlTests {
 
         root.setChildren(rootFiles);
 
-        Control ctrl = new Control(root);
+        Control ctrl = new Control(root, new Machine());
         ctrl.processCommand("ls");
         assertEquals("randomDir\nsecondRandomDir\n\n", outContent.toString());
 
@@ -49,7 +50,7 @@ public class ControlTests {
         System.setOut(new PrintStream(outContent));
 
         FileSysNode root = new FileSysNode("root", new ArrayList<>());
-        Control ctrl = new Control(root);
+        Control ctrl = new Control(root, new Machine());
 
 
         ctrl.processCommand("ls");
@@ -76,7 +77,7 @@ public class ControlTests {
 
         root.setChildren(rootFiles);
 
-        Control ctrl = new Control(root);
+        Control ctrl = new Control(root, new Machine());
         ctrl.processCommand("cd randomDir");
 
         assertEquals("randomDir", ctrl.getCurDir().getName());
@@ -101,7 +102,7 @@ public class ControlTests {
 
         root.setChildren(rootFiles);
 
-        Control ctrl = new Control(root);
+        Control ctrl = new Control(root, new Machine());
         ctrl.processCommand("cd typo");
 
         assertEquals("root", ctrl.getCurDir().getName());
@@ -132,7 +133,7 @@ public class ControlTests {
         root.setChildren(rootFiles);
         randomDir.setChildren(secondLayer);
 
-        Control ctrl = new Control(root);
+        Control ctrl = new Control(root, new Machine());
         ctrl.processCommand("cd randomDir/../randomDir/secondRandomDir");
 
         assertEquals("secondRandomDir", ctrl.getCurDir().getName());

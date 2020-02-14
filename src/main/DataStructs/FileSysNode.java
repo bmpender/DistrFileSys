@@ -6,10 +6,10 @@ import java.util.List;
 public class FileSysNode {
     private String name;
     private FileSysNode parent;
-    private List<String> machinesContainingNode;
+    private List<Machine> machinesContainingNode;
     private List<FileSysNode> children;
 
-    public FileSysNode(String name, List<String> machinesContainingNode) {
+    public FileSysNode(String name, List<Machine> machinesContainingNode) {
         this.name = name;
         this.parent = null;
         this.machinesContainingNode = machinesContainingNode;
@@ -24,7 +24,7 @@ public class FileSysNode {
         return this.parent;
     }
 
-    public List<String> getMachinesContainingNode(){
+    public List<Machine> getMachinesContainingNode(){
         return this.machinesContainingNode;
     }
 
@@ -40,7 +40,7 @@ public class FileSysNode {
         this.children = children;
     }
 
-    public void setMachinesContainingNode(List<String> machinesContainingNode){
+    public void setMachinesContainingNode(List<Machine> machinesContainingNode){
         this.machinesContainingNode = machinesContainingNode;
     }
 }
