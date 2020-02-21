@@ -13,7 +13,7 @@ public class TestExecuteCommand {
         String host = args[0];
         String user = args[1];
         String password = args[2];
-        String command = "sshpass -p project490 scp /home/project490/random.txt mastermachine@137.112.235.48:/home/mastermachine\nexit\n";
+        String command = "pwd\nexit\n";
         try {
             JSch jsch = new JSch();
             Session session = jsch.getSession(user,host, 22);
